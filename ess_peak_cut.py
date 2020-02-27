@@ -8,6 +8,16 @@ Created on Tue Feb 25 09:48:34 2020
 
 import pandas as pd
 
+def next_time(time):
+    if time%100 == 45:
+        if time - time%100 == 2300:
+            return 0
+        else:
+            return time - time%100 + 100
+    else:
+        return time + 15
+
+
 class peak_cut:
     def read_data(self, path, date, ess):
         self.ess = ess
