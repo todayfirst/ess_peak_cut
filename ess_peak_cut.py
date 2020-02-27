@@ -25,13 +25,20 @@ class peak_cut:
     def check(self, val):
         surplus = 0
         ess_vol = self.ess.cap
-        for each in range(len(self.need_watt)):
-            if each>val: 
-                ess_vol = ess_vol - each
+        each = 0
+        while each < len(self.need_watt):
+            
+            if self.need_watt[each]>val: 
+                ess_vol = ess_vol - self.need_watt[each]
                 if ess_vol <0 :
                     return False
                 find_plus = each+1
+                for_cut = 0
                 while find_plus<len(self.need_watt):
-                    
+                    if self.need_watt[find_plus]>val:
+                        for_cut = val - self.need_watt[find_plus]
+                        break
+                    else:
+                        find_plus = find_plus + 1
             
 
